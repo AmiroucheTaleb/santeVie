@@ -13,42 +13,38 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
   <body>
+    <!-- rendez-vous -->
     <div class="container">
       <h2><%= title %></h2>
-      <a href="/red" class="btn btn-sm btn-primary">appointment list</a
-      ><br /><br />
-      <a href="/add" class="btn btn-sm btn-primary">Add patient</a><br /><br />
+      <a href="/" class="btn btn-sm btn-primary">back</a><br /><br />
       <table class="table table-dark table-striped">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>genre</th>
-            <th>Age</th>
+            <th>patient ID</th>
+            <th>date</th>
+            <th>heure</th>
             <th>action</th>
           </tr>
         </thead>
         <tbody>
-          <% patients.forEach(function(user){ %>
+          <% appointments.forEach(function(app){ %>
 
           <tr>
-            <td><%= user.id %></td>
-            <td><%= user.nom %></td>
-            <td><%= user.prenom %></td>
-            <td><%= user.sexe %></td>
-            <td><%= user.age %></td>
+            <td><%= app.appointment_id %></td>
+            <td><%= app.patient_id %></td>
+            <td><%= app.appointment_date %></td>
+            <td><%= app.appointment_slot%></td>
             <td>
-              <a href="edit/<%= user.id %>" class="btn btn-sm btn-primary"
+              <a
+                href="edit/<%= app.appointment_id %>"
+                class="btn btn-sm btn-primary"
                 >Edit</a
               >
-              <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger"
-                >Delete</a
-              >
               <a
-                href="red_add/<%= user.id %>"
-                class="btn btn-sm btn-outline-primary"
-                >make appointment</a
+                href="red_delete/<%= app.appointment_id %>"
+                class="btn btn-sm btn-danger"
+                >Delete</a
               >
             </td>
           </tr>

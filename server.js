@@ -35,12 +35,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   // res.send('CRUD Operation using NodeJS / ExpressJS / MySQL');
   let sql = "SELECT * FROM patients";
-  let sqlapp = "SELECT * FROM appointments";
-  connection.query(sql, sqlapp, (err, rows) => {
+  connection.query(sql, (err, rows) => {
     if (err) throw err;
     res.render("user_index", {
       title: "gestion des patients",
       patients: rows,
+    });
+  });
+});
+app.get("/red", (req, res) => {
+  // res.send('CRUD Operation using NodeJS / ExpressJS / MySQL');
+  let sqlapp = "SELECT * FROM appointments ";
+  connection.query(sqlapp, (err, rows) => {
+    if (err) throw err;
+    res.render("red", {
+      title: "gestion des patients",
+      appointments: rows,
     });
   });
 });
@@ -80,6 +90,16 @@ app.get("/delete/:id", (req, res) => {
   connection.query(deleteQuery, function (error, result) {
     console.log("patient supprimer");
     res.redirect("/");
+  });
+});
+//supprimer un rendez vous
+app.get("/red_delete/:appointment_id", (req, res) => {
+  const red_id = req.params.appointment_id;
+  let red_deleteQuery = `DELETE FROM appointments WHERE appointment_id = ${red_id};`;
+
+  connection.query(red_deleteQuery, function (error, result) {
+    console.log("rendez-vous supprimer");
+    res.redirect("/ red");
   });
 });
 
