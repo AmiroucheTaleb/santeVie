@@ -1,0 +1,10 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+h1 {
+  color: blue;
+}
