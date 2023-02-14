@@ -45,7 +45,8 @@ app.get("/", (req, res) => {
 });
 app.get("/red", (req, res) => {
   // res.send('CRUD Operation using NodeJS / ExpressJS / MySQL');
-  let sqlapp = "SELECT * FROM appointments ";
+  let sqlapp =
+    "SELECT appointment_id  ,patient_id , appointment_date , appointment_slot , nom ,prenom from appointments join patients on patient_id = id; ";
   connection.query(sqlapp, (err, rows) => {
     if (err) throw err;
     res.render("red", {

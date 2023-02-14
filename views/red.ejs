@@ -13,6 +13,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
   <body>
+    <% const formatDate = (string)=>{ 
+      const monthName = ["janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "september", "octobre", "novembre", "december"]
+      let date = new Date(string); 
+    
+    return date.getDay()+" - "+monthName[date.getMonth()]+' - '+date.getFullYear()}; %>
     <!-- rendez-vous -->
     <div class="container">
       <h2><%= title %></h2>
@@ -32,8 +37,8 @@
 
           <tr>
             <td><%= app.appointment_id %></td>
-            <td><%= app.patient_id %></td>
-            <td><%= app.appointment_date %></td>
+            <td><%= app.nom +" " + app.prenom %></td>
+            <td><%= formatDate(app.appointment_date) %></td>
             <td><%= app.appointment_slot%></td>
             <td>
               <a
